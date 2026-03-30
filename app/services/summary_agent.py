@@ -118,22 +118,22 @@ def _format_analysis(result: dict) -> str:
     """
     lines = []
     
+    step1 = result.get("step1", {})
+    summary = step1.get("summary", {})
+
     # 섭취 목적
-    intake_purpose = result.get("intake_purpose", "")
+    intake_purpose = summary.get("purpose", "")
     if intake_purpose:
         lines.append(f"[섭취 목적] {intake_purpose}")
     
     # 복용 약물
-    medications = result.get("medications", [])
+    medications = summary.get("medications", [])
     if medications:
         lines.append(f"[복용 약물] {', '.join(medications)}")
     else:
         lines.append("[복용 약물] 없음")
     
     # step1: summary
-    step1 = result.get("step1", {})
-    summary = step1.get("summary", {})
-    
     if summary:
         lines.append(f"[전반적 평가] {summary.get('overall_assessment', '')}")
         key_concerns = summary.get("key_concerns", [])
