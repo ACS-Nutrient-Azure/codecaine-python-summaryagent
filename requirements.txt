@@ -5,3 +5,4 @@ pydantic-settings==2.3.4
 boto3==1.38.0
 python-dotenv==1.0.1
 openai==1.54.5
+aws-xray-sdk==2.14.0
